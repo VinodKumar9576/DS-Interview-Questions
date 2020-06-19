@@ -1,0 +1,21 @@
+# .github/workflows/main.yml
+name: Test Colab Badge Action
+on: [push]
+
+jobs:
+  build:
+    name: Colab Badge Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@master
+      - name: Add/Update badges
+        id: badges
+        uses: trsvchn/colab-badge-action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          check: 'all'
+          update: true
+          target_branch: master
+          target_repository: VinodKumar9576/DS-Interview-Questions
